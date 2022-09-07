@@ -44,5 +44,6 @@ int delete_stack_end(stack_t **head);
 /* task_functions1.c */
 void stack_push(stack_t **head, unsigned int ln);
 void stack_pall(stack_t **head, unsigned int ln);
-
+void stk_swap(stack_t **head, unsigned int ln);
+void stack_pop(stack_t **head, unsigned int ln);
 #endif

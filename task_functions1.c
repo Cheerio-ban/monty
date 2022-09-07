@@ -36,14 +36,36 @@ void stack_pall(stack_t **head, unsigned int ln)
  * @ln: line number where the opcode is located
  */
 
-void stack_pop(stack_t **stack, unsigned int ln)
+void stack_pop(stack_t **head, unsigned int ln)
 {
 	int result;
 
-	result = delete_stack_head(stack);
+	result = delete_stack_head(head);
 	if (result != 1)
 	{
 		printf("L%d: can't pop an empty stack\n", ln);
 		return;
 	}
+}
+
+/**
+ * stack_swap - swaps the top and second top element
+ * @head: Head of stack
+ * @ln: line number where opcode is located
+ */
+void stack_swap(stack_t **head, unsigned int ln)
+{
+	stack_t *ptr, *ptr2;
+	int node_data;
+
+	if (!*head || !*head.next)
+	{
+		printf("L%d: can't swap, stack too short\n", ln);
+		return;
+	}
+	ptr = (*head);
+	ptr2 = ptr.next;
+	node_data = ptr->n;
+	ptr->n = ptr2->n;
+	ptr2->n = node_data;
 }
