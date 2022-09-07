@@ -21,7 +21,9 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct instruction_s - opcode and its function
+ * @brief 
+ * 
+ *
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
@@ -46,4 +48,7 @@ void stack_push(stack_t **head, unsigned int ln);
 void stack_pall(stack_t **head, unsigned int ln);
 void stk_swap(stack_t **head, unsigned int ln);
 void stack_pop(stack_t **head, unsigned int ln);
+void get_opcodes(char *filename, stack_t *stack);
+void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n);
+
 #endif

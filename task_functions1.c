@@ -9,8 +9,13 @@
 void stack_push(stack_t **head, unsigned int ln)
 {
 	int result;
+	char *ar;
+	int arg;
 
-	result = add_to_stack(head, argv[1]);
+	ar = strtok(NULL, " \t\n");
+	arg = atoi(ar);
+
+	result = add_to_stack(head, arg);
 	if (result < 0)
 	{
 		printf("L%d: usage: push integer\n", ln);
