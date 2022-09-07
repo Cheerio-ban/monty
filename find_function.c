@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "list.h"
 
-extern int a;
-
+int a = 10;
 char **get_tokens(void)
 {
 	char **tokens, **q;
@@ -16,7 +16,6 @@ char **get_tokens(void)
 	int i = 0;
 	int no = 4;
 
-	a = 10;
 	s = getline(&p, &n,stdin);
 	tokens = malloc(sizeof(char *) * no);
 	if (tokens == NULL)
@@ -27,14 +26,7 @@ char **get_tokens(void)
 	token = strtok(p, " \n");
 	tokens[i] = token;
 
-	while (token != NULL)
-	{
-		token = strtok(NULL, " \n");
-		i++;
-		tokens[i] = token;
-	}
-	i++;
-	tokens[i] = token;
+	
 
 	return (tokens);
 } 
@@ -52,5 +44,8 @@ int main(void)
 	{
 		printf("%s\n%d\n", q[b], a);
 	}
+
+	char *r = strtok(NULL, " \n");
+	printf("%s\n", r);
 
 }

@@ -24,22 +24,13 @@ void get_opcodes(char *filename)
 	while((n = getline(&opcodes, &len, f)) >= 0)
 	{
 		opcode = strtok(opcodes, " \t\n");
-		if (strcmp(opcode, "push") != 0)
+		f = get_opcode(opcode);
+		if (f == NULL)
 		{
-			f = get_opcode(opcode);
-			if (f == NULL)
-			{
-				fprintf(stderr, "L%d: unknown instruction %s", line_no, opcode);
-				exit(EXIT_FAILURE);
-			}
-			f(&stack, line_no);
+			fprintf(stderr, "L%d: unknown instruction %s", line_no, opcode);
+			exit(EXIT_FAILURE);
 		}
-		else
-		{
-			arg = strtok(NULL, " \t\n");
-			f = get_opcode(opcode);
-		}
-		
+		f(&stack, line_no);
 	}
 }
 
