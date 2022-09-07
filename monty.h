@@ -33,7 +33,9 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+void get_opcodes(char *filename);
+char **get_commands(char *s);
+void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 
 
 #endif
