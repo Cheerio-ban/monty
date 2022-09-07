@@ -35,7 +35,14 @@ typedef struct instruction_s
 } instruction_t;
 
 /* helper_functions.c */
+int add_to_stack(stack_t **head, int n);
+void free_stack(stack_t *head);
+int delete_stack_head(stack_t **head);
+int print_stack(stack_t **head);
+int delete_stack_end(stack_t **head);
+
+/* task_functions1.c */
 void stack_push(stack_t **head, unsigned int ln);
-void stack_pall(stack_t **stack, unsigned int ln);
+void stack_pall(stack_t **head, unsigned int ln);
 
 #endif
