@@ -6,11 +6,11 @@
  * @n: line number where the opcode is located
  * @data: Node data
  */
-void stack_push(stack_t **head, unsigned int ln, int data)
+void stack_push(stack_t **head, unsigned int ln)
 {
 	int result;
 
-	result = add_to_stack(head, data);
+	result = add_to_stack(head, argv[1]);
 	if (result < 0)
 	{
 		printf("L%d: usage: push integer\n", ln);
