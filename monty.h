@@ -34,6 +34,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+/* helper_functions.c */
+void stack_push(stack_t **head, unsigned int ln, int data);
+void stack_pall(stack_t **stack, unsigned int ln);
 
 #endif

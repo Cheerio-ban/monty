@@ -5,7 +5,7 @@
  * @s: opcode passed to the program
  * Return: A pointer to an opcode function, NULL if not valid
  */
-void (*get_opcode_func(*char s))(stack_t **stack, unsigned int n)
+void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 {
 	int i;
 	instruction_t stak[] = {
