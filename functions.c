@@ -5,14 +5,14 @@
 #include <string.h>
 
 
-void get_opcodes(char *filename)
+void get_opcodes(char *filename, stack_t *stack)
 {
 	FILE *f;
 	ssize_t n;
-	char *opcodes, *opcode, *arg, **op_command;
+	char *opcodes, *opcode, *arg;
 	size_t len = 0, i = 0;
-	int line_no = 0;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	int line_no = 1;
+	void (*g)(stack_t **stack, unsigned int line_number);
 
 	if ((f = fopen(filename, "r")) == NULL)
 	{
@@ -24,13 +24,19 @@ void get_opcodes(char *filename)
 	while((n = getline(&opcodes, &len, f)) >= 0)
 	{
 		opcode = strtok(opcodes, " \t\n");
-		f = get_opcode(opcode);
-		if (f == NULL)
+		if (!opcode)
+		{
+			line_no++;
+			continue;
+		}
+		g = get_opcode_func(opcode);
+		if (g == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s", line_no, opcode);
 			exit(EXIT_FAILURE);
 		}
-		f(&stack, line_no);
+		g(&stack, line_no);
+		i++;
 	}
 }
 

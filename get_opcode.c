@@ -11,7 +11,7 @@ void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 	instruction_t stak[] = {
 		{"pall", stack_pall},
 		{"push", stack_push},
-		{"pop", stack_pop},
+		/*{"pop", stack_pop},
 		{"add", stack_add},
 		{"swap", stack_swap},
 		{"pint", stack_pint},
@@ -24,7 +24,7 @@ void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 		{"mul", stack_mul},
 		{"mod", stack_mod},
 		{"queue", stack_queue},
-		{"stack", stack_stack},
+		{"stack", stack_stack},*/
 		{NULL, NULL}
 	};
 

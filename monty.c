@@ -17,12 +17,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	get_opcodes(f);
-
-
-	
-
-
-
+	get_opcodes(f, stack);
 	return (0);
 }

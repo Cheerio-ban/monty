@@ -24,6 +24,11 @@ char **get_tokens(void)
 	}
 
 	token = strtok(p, " \n");
+	if (!token)
+	{
+		perror("invalid");
+		exit(98);
+	}
 	tokens[i] = token;
 
 	
