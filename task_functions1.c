@@ -4,13 +4,46 @@
  * stack_push - pushes a value to the stack
  * @head: the head of the stack linked list
  * @n: line number where the opcode is located
+ * @data: Node data
  */
-void stack_push(stack_t **head, unsigned int n)
+void stack_push(stack_t **head, unsigned int ln)
 {
-	add_to_stack(head, n);
+	int result;
+
+	result = add_to_stack(head, argv[1]);
+	if (result < 0)
+	{
+		printf("L%d: usage: push integer\n", ln);
+		return;
+	}
 }
 
-void stack_pall(stack_t **head, unsigned int n)
+/**
+ * stk_pall - prints all values of the stack
+ * @stack: the head of the stack
+ * @ln: line number where the opcode is located
+ */
+
+
+void stack_pall(stack_t **head, unsigned int ln)
 {
 	print_stack(head);
+}
+
+/**
+ * stack_pop - Removes the top element of the stack
+ * @stack: Head of the stack
+ * @ln: line number where the opcode is located
+ */
+
+void stack_pop(stack_t **stack, unsigned int ln)
+{
+	int result;
+
+	result = delete_stack_head(stack);
+	if (result != 1)
+	{
+		printf("L%d: can't pop an empty stack\n", ln);
+		return;
+	}
 }
