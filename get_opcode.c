@@ -12,8 +12,9 @@ void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 		{"pall", stack_pall},
 		{"push", stack_push},
 		/*{"pop", stack_pop},
-		{"add", stack_add},
+		{"add", stack_add},*/
 		{"swap", stack_swap},
+		/*
 		{"pint", stack_pint},
 		{"nop", stack_nop},
 		{"pchar", stack_pchar},
@@ -29,7 +30,7 @@ void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
 	};
 
 	i = 0;
-	while (i < 17)
+	while (stak[i].opcode)
 	{
 		if (strcmp(s, (stak[i]).opcode) == 0)
 		{

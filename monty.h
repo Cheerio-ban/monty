@@ -47,7 +47,7 @@ int delete_stack_end(stack_t **head);
 /* task_functions1.c */
 void stack_push(stack_t **head, unsigned int ln);
 void stack_pall(stack_t **head, unsigned int ln);
-void stk_swap(stack_t **head, unsigned int ln);
+void stack_swap(stack_t **head, unsigned int ln);
 void stack_pop(stack_t **head, unsigned int ln);
 void get_opcodes(char *filename, stack_t *stack);
 void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n);

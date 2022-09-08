@@ -63,13 +63,13 @@ void stack_swap(stack_t **head, unsigned int ln)
 	stack_t *ptr, *ptr2;
 	int node_data;
 
-	if (!*head || !*head.next)
+	if (!*head || !(*head)->next)
 	{
 		printf("L%d: can't swap, stack too short\n", ln);
 		return;
 	}
 	ptr = (*head);
-	ptr2 = ptr.next;
+	ptr2 = ptr->next;
 	node_data = ptr->n;
 	ptr->n = ptr2->n;
 	ptr2->n = node_data;

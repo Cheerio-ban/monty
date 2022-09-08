@@ -10,8 +10,8 @@ void get_opcodes(char *filename, stack_t *stack)
 	FILE *f;
 	ssize_t n;
 	char *opcodes, *opcode, *arg;
-	size_t len = 0, i = 0;
-	int line_no = 1;
+	size_t len = 0;
+	unsigned int line_no = 1;
 	void (*g)(stack_t **stack, unsigned int line_number);
 
 	if ((f = fopen(filename, "r")) == NULL)
@@ -23,8 +23,9 @@ void get_opcodes(char *filename, stack_t *stack)
 
 	while((n = getline(&opcodes, &len, f)) >= 0)
 	{
+
 		opcode = strtok(opcodes, " \t\n");
-		if (!opcode)
+		if (!(opcode))
 		{
 			line_no++;
 			continue;
@@ -32,46 +33,12 @@ void get_opcodes(char *filename, stack_t *stack)
 		g = get_opcode_func(opcode);
 		if (g == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s", line_no, opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
 			exit(EXIT_FAILURE);
 		}
 		g(&stack, line_no);
-		i++;
+		line_no++;
 	}
+
+	fclose(f);
 }
-
-/**
-char **get_commands(char *s)
-{
-	char **tokens;
-	char *token;
-	int i = 1;
-
-	token = strtok(s, " \t\n");
-	if (strcmp(token, "push") != 0)
-	{
-		tokens = malloc(sizeof(char *) * 1);
-		tokens[0] = token;
-	}
-	printf("%s\n", tokens[0]);
-	/**
-	else
-	{
-		return (NULL);	
-	}
-	
-	
-	
-	while (token != NULL)
-	{
-		token = strtok(NULL, " \n");
-		i++;
-		tokens[i] = token;
-	}
-	i++;
-	tokens[i] = token;
-
-	return (tokens);
-
-}
-*/

@@ -9,7 +9,7 @@ int a = 10;
 char **get_tokens(void)
 {
 	char **tokens, **q;
-	char *p;
+	char *p = NULL;
 	size_t n = 0;
 	ssize_t s ;
 	char *token;
@@ -52,5 +52,11 @@ int main(void)
 
 	char *r = strtok(NULL, " \n");
 	printf("%s\n", r);
+	while(r != NULL)
+		r = strtok(NULL, " \n");
+
+	/*char *h = "my name";
+	char *p = strtok(h, " \n");*/
+	printf("%s\n", );
 
 }
