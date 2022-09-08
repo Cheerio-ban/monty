@@ -66,4 +66,7 @@ void stack_rotr(stack_t **head, unsigned int ln);
 void stack_pchar(stack_t **head, unsigned int ln);
 void stack_pstr(stack_t **head, unsigned int ln);
 
+/* helps.c */
+int is_ascii(int c);
+
 #endif

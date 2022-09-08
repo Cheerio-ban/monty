@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * stack_mod - mod top two element in a stack
  * @head: Head of stack
@@ -8,9 +9,9 @@ void stack_mod(stack_t **head, unsigned int ln)
 {
 	stack_t *ptr, *ptr2;
 
-	if (!*head || !*head->next)
+	if ((*head) == NULL || (*head)->next == NULL)
 	{
-		printf("L%d: can't mod, stack too short\n", ld);
+		printf("L%d: can't mod, stack too short\n", ln);
 		return;
 	}
 	ptr = *head;

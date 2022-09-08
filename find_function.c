@@ -57,6 +57,6 @@ int main(void)
 
 	/*char *h = "my name";
 	char *p = strtok(h, " \n");*/
-	printf("%s\n", );
+	/*printf("%s\n", );*/
 
 }

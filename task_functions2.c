@@ -8,10 +8,10 @@
 
 void stack_add(stack_t **head, unsigned int ln)
 {
-	stack_t ptr;
-	stack_t ptr2;
+	stack_t *ptr;
+	stack_t *ptr2;
 
-	if (!*head || !*head.next)
+	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", ln);
 		return;
@@ -46,15 +46,15 @@ void stack_nop(stack_t **head, unsigned int ln)
 
 void stack_sub(stack_t **head, unsigned int ln)
 {
-	stack_t ptr, ptr2;
+	stack_t *ptr, *ptr2;
 
-	if (!*head || !*head.next)
+	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't sub, stack too short\n", ln);
 		return;
 	}
 	ptr = (*head);
-	ptr2 = ptr.next;
+	ptr2 = ptr->next;
 	ptr->n = ptr2->n - ptr->n;
 	ptr->next = ptr2->next;
 	if (ptr2->next)

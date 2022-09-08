@@ -32,6 +32,7 @@ void stack_push(stack_t **head, unsigned int ln)
 
 void stack_pall(stack_t **head, unsigned int ln)
 {
+	(void) ln;
 	print_stack(head);
 }
 
