@@ -60,6 +60,7 @@ void stack_mul(stack_t **head, unsigned int ln);
 
 /* task_functions3.c */
 void stack_mod(stack_t **head, unsigned int ln);
+void stack_rotl(stack_t **head, unsigned int ln);
 void stack_rotr(stack_t **head, unsigned int ln);
 
 #endif
