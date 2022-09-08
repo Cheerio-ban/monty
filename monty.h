@@ -37,6 +37,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n);
+
 /* helper_functions.c */
 int add_to_stack(stack_t **head, int n);
 void free_stack(stack_t *head);
@@ -49,8 +51,8 @@ void stack_push(stack_t **head, unsigned int ln);
 void stack_pall(stack_t **head, unsigned int ln);
 void stack_swap(stack_t **head, unsigned int ln);
 void stack_pop(stack_t **head, unsigned int ln);
+void stack_pint(stack_t **head, unsigned int ln);
 void get_opcodes(char *filename, stack_t *stack);
-void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n);
 
 /* task_functions2.c */
 void stack_add(stack_t **head, unsigned int ln);

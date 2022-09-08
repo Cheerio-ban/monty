@@ -75,3 +75,22 @@ void stack_swap(stack_t **head, unsigned int ln)
 	ptr->n = ptr2->n;
 	ptr2->n = node_data;
 }
+/**
+ * stak_pint - print value at top of stack followed by new line
+ * @head: head of stack
+ * @ln: line number where the opcode is located
+ */
+
+void stack_pint(stack_t **head, unsigned int ln)
+{
+	stack_t *ptr;
+
+	ptr = *head;
+	if (ptr == NULL)
+	{
+		printf("L%d: can't pint, stack empty\n", ln);
+		return;
+	}
+
+	printf("%d\n", ptr->n);
+}
