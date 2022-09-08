@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -62,5 +63,6 @@ void stack_mul(stack_t **head, unsigned int ln);
 void stack_mod(stack_t **head, unsigned int ln);
 void stack_rotl(stack_t **head, unsigned int ln);
 void stack_rotr(stack_t **head, unsigned int ln);
+void stack_pchar(stack_t **head, unsigned int ln);
 
 #endif

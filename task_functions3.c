@@ -86,3 +86,30 @@ void stack_rotr(stack_t **head, unsigned int ln)
 		(*head) = ptr2;
 	}
 }
+
+/**
+ * stack_pchar - prints the char at the top of the stack
+ * @head: head to the stack
+ * @ln: line number where opcode is located
+ */
+
+void stack_pchar(stack_t **head, unsigned int ln)
+{
+	int c;
+	stack_t *ptr;
+
+	ptr = (*head);
+	if (ptr == NULL)
+	{
+		printf("L%d: can't pchar, stack empty\n", ln);
+		return;
+	}
+	c = ptr->n;
+	if (!(is_ascii(c)))
+	{
+		printf("L%d: can't pchar, value out of range\n", ln);
+		return;
+	}
+	putchar(c);
+	putchar('\n');
+}
