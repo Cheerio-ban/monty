@@ -95,3 +95,29 @@ void stack_div(stack_t **head, unsigned int ln)
 		ptr->next = NULL;
 	free(ptr2);
 }
+
+/**
+ * stack_mul - multiplies the top two elements of the stack
+ * @head: Head of the stack
+ * @ln: line number where the opcode is located
+ */
+
+void stack_mul(stack_t **head, unsigned int ln)
+{
+	stack_t *ptr, *ptr2;
+
+	if ((*head) == NULL || (*head)->next == NULL)
+	{
+		printf("L%d: can't mul, stack too short\n", ln);
+		return;
+	}
+	ptr = (*head);
+	ptr2 = ptr->next;
+	ptr->n = ptr->n * ptr2->n;
+	ptr->next = ptr2->next;
+	if (ptr->next)
+		ptr->next->prev = ptr;
+	else
+		ptr->next = NULL;
+	free(ptr2);
+}
