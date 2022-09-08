@@ -56,5 +56,9 @@ void stack_add(stack_t **head, unsigned int ln);
 void stack_sub(stack_t **head, unsigned int ln);
 void stack_nop(stack_t **head, unsigned int ln);
 void stack_div(stack_t **head, unsigned int ln);
+void stack_mul(stack_t **head, unsigned int ln);
+
+/* task_functions3.c */
+void stack_mod(stack_t **head, unsigned int ln);
 
 #endif
