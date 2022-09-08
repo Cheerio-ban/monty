@@ -113,3 +113,25 @@ void stack_pchar(stack_t **head, unsigned int ln)
 	putchar(c);
 	putchar('\n');
 }
+
+/**
+ * stack_pstr - prints the string starting at the stack
+ * @head: head to the top of the stack
+ * @ln: line number of the opcode
+ */
+
+void stack_pstr(stack_t **head, unsigned int ln)
+{
+	stack_t *ptr;
+	int c;
+
+	(void) ln;
+	ptr = (*head);
+	while (ptr != NULL && ptr->n != 0 && is_ascii(ptr->n))
+	{
+		c = ptr->n;
+		putchar(c);
+		ptr = ptr->next;
+	}
+	putchar('\n');
+}

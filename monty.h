@@ -64,5 +64,6 @@ void stack_mod(stack_t **head, unsigned int ln);
 void stack_rotl(stack_t **head, unsigned int ln);
 void stack_rotr(stack_t **head, unsigned int ln);
 void stack_pchar(stack_t **head, unsigned int ln);
+void stack_pstr(stack_t **head, unsigned int ln);
 
 #endif
