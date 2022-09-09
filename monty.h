@@ -38,6 +38,14 @@ typedef struct instruction_s
 } instruction_t;
 
 void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n);
+extern int value[];
+
+/*error.c */
+void check_argc(int argc);
+void check_valid_file(char *filename);
+void check_file_stream(FILE *fp, char *filename);
+void check_opcode(void (*opcode)(), int lineno, char *cmd);
+void check_fail(char *line, FILE *fp, stack_t *head);
 
 /* helper_functions.c */
 int add_to_stack(stack_t **head, int n);
@@ -70,5 +78,11 @@ void stack_pstr(stack_t **head, unsigned int ln);
 
 /* helps.c */
 int is_ascii(int c);
+int check_if_number(char *str);
+int check_if_push(char **tok_line, int lineno);
+void check_data_structure(char *opcode);
+
+/* functions.c */
+int add_to_queue(stack_t **head, int n);
 
 #endif
