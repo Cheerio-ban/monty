@@ -7,25 +7,25 @@
 
 void op_rotl(stack_t **head, unsigned int ln)
 {
-        stack_t *ptr, *ptr2;
+	stack_t *ptr, *ptr2;
 
-        (void) ln;
-        ptr = (*head);
-        if (ptr == NULL)
-                return;
-        ptr2 = ptr;
-        if (ptr->next == NULL)
-                ;
-        else
-        {
-                (*head) = (*head)->next;
-                while (ptr2->next)
-                        ptr2 = ptr2->next;
-                ptr2->next = ptr;
-                ptr->prev = ptr2;
-                ptr->next->prev = NULL;
-                ptr->next = NULL;
-        }
+	(void) ln;
+	ptr = (*head);
+	if (ptr == NULL)
+		return;
+	ptr2 = ptr;
+	if (ptr->next == NULL)
+		;
+	else
+	{
+		(*head) = (*head)->next;
+		while (ptr2->next)
+			ptr2 = ptr2->next;
+		ptr2->next = ptr;
+		ptr->prev = ptr2;
+		ptr->next->prev = NULL;
+		ptr->next = NULL;
+	}
 }
 
 /**
@@ -36,24 +36,23 @@ void op_rotl(stack_t **head, unsigned int ln)
 
 void op_rotr(stack_t **head, unsigned int ln)
 {
-        stack_t *ptr, *ptr2;
+	stack_t *ptr, *ptr2;
 
-        (void) ln;
-        ptr = (*head);
-        if (ptr == NULL)
-                return;
-        ptr2 = ptr;
-        if (ptr->next == NULL)
-                ;
-        else
-        {
-                while (ptr2->next != NULL)
-                        ptr2 = ptr2->next;
-                ptr2->prev->next = NULL;
-                ptr2->prev = NULL;
-                ptr2->next = ptr;
-                ptr->prev = ptr2;
-                (*head) = ptr2;
-        }
+	(void) ln;
+	ptr = (*head);
+	if (ptr == NULL)
+		return;
+	ptr2 = ptr;
+	if (ptr->next == NULL)
+		;
+	else
+	{
+		while (ptr2->next != NULL)
+			ptr2 = ptr2->next;
+		ptr2->prev->next = NULL;
+		ptr2->prev = NULL;
+		ptr2->next = ptr;
+		ptr->prev = ptr2;
+		(*head) = ptr2;
+	}
 }
-
