@@ -70,3 +70,4 @@ void get_op(char *line)
 	op.opcode = _strdup(_strtok(line, " "));
 	op.arg = _strdup(_strtok(NULL, " "));
 }
+

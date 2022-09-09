@@ -82,6 +82,9 @@ void op_mod(stack_t **stack, unsigned int line_number);
 void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
 
+void op_rotr(stack_t **head, unsigned int ln);
+void op_rotl(stack_t **head, unsigned int ln);
+
 /* free_functions.c */
 void free_list(stack_t *head);
 void free_op(void);

@@ -23,6 +23,8 @@ void (*get_op_func(void))(stack_t **, unsigned int)
 		{"mod", op_mod},
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
+		{"rotr", op_rotr},
+		{"rotl", op_rotl},
 		{NULL, NULL}
 	};
 
@@ -39,3 +41,4 @@ void (*get_op_func(void))(stack_t **, unsigned int)
 
 	return (NULL);
 }
+

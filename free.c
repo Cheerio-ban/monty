@@ -30,3 +30,4 @@ void free_op(void)
 	free_list(op.head);
 	fclose(op.input);
 }
+
