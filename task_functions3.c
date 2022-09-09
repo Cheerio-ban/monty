@@ -12,6 +12,7 @@ void stack_mod(stack_t **head, unsigned int ln)
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't mod, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = *head;
@@ -19,6 +20,7 @@ void stack_mod(stack_t **head, unsigned int ln)
 	if (ptr->n == 0)
 	{
 		printf("L%d: division by zero\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr->n = ptr2->n % ptr->n;
@@ -103,12 +105,14 @@ void stack_pchar(stack_t **head, unsigned int ln)
 	if (ptr == NULL)
 	{
 		printf("L%d: can't pchar, stack empty\n", ln);
+		value[2] = 1;
 		return;
 	}
 	c = ptr->n;
 	if (!(is_ascii(c)))
 	{
 		printf("L%d: can't pchar, value out of range\n", ln);
+		value[2] = 1;
 		return;
 	}
 	putchar(c);

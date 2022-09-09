@@ -14,6 +14,7 @@ void stack_add(stack_t **head, unsigned int ln)
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = (*head);
@@ -51,6 +52,7 @@ void stack_sub(stack_t **head, unsigned int ln)
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't sub, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = (*head);
@@ -78,6 +80,7 @@ void stack_div(stack_t **head, unsigned int ln)
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't div, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = (*head);
@@ -109,6 +112,7 @@ void stack_mul(stack_t **head, unsigned int ln)
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't mul, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = (*head);

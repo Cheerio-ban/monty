@@ -55,6 +55,7 @@ void stack_pop(stack_t **head, unsigned int ln)
 	if (result != 1)
 	{
 		printf("L%d: can't pop an empty stack\n", ln);
+		value[2] = 1;
 		return;
 	}
 }
@@ -72,6 +73,7 @@ void stack_swap(stack_t **head, unsigned int ln)
 	if (!*head || !(*head)->next)
 	{
 		printf("L%d: can't swap, stack too short\n", ln);
+		value[2] = 1;
 		return;
 	}
 	ptr = (*head);
@@ -94,6 +96,7 @@ void stack_pint(stack_t **head, unsigned int ln)
 	if (ptr == NULL)
 	{
 		printf("L%d: can't pint, stack empty\n", ln);
+		value[2] = 1;
 		return;
 	}
 
