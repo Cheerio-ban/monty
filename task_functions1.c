@@ -9,16 +9,15 @@
 void stack_push(stack_t **head, unsigned int ln)
 {
 	int result;
-	char *ar;
-	int arg;
 
-	ar = strtok(NULL, " \t\n");
-	arg = atoi(ar);
-
-	result = add_to_stack(head, arg);
+	if (value[1] == 0)
+		result = add_to_stack(head, value[0]);
+	else
+		result = add_to_queue(head, value[0]);
 	if (result < 0)
 	{
 		printf("L%d: usage: push integer\n", ln);
+		value[2] = 1;
 		return;
 	}
 }
@@ -32,8 +31,14 @@ void stack_push(stack_t **head, unsigned int ln)
 
 void stack_pall(stack_t **head, unsigned int ln)
 {
+	int result;
 	(void) ln;
-	print_stack(head);
+
+	result = print_stack(stack);
+	if (result != 0)
+	{
+		;
+	}
 }
 
 /**
