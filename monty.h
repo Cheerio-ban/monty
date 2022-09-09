@@ -63,25 +63,26 @@ void get_op(char *line);
 /* get_op_func.c */
 void (*get_op_func(void))(stack_t **, unsigned int);
 
-/* op_functions.c */
+/* task_functions1.c */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 
-/* op_functions2.c */
+/* task_functions2.c */
 void op_add(stack_t **stack, unsigned int line_number);
 void op_nop(stack_t **stack, unsigned int line_number);
 void op_sub(stack_t **stack, unsigned int line_number);
 void op_div(stack_t **stack, unsigned int line_number);
 void op_mul(stack_t **stack, unsigned int line_number);
 
-/* op_functions3.c */
+/* task_functions3.c */
 void op_mod(stack_t **stack, unsigned int line_number);
 void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
 
+/* task_functions4.c */
 void op_rotr(stack_t **head, unsigned int ln);
 void op_rotl(stack_t **head, unsigned int ln);
 
