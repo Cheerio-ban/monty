@@ -1,74 +1,124 @@
 #include "monty.h"
 
 /**
- * tokenize_line - Tokenize command and any arguments
- * @s: line to parse
- * @tokens: buffer to fill
- * Return: 1 if success, 0 if failed
+ * _strcpy - makes a copy of a string
+ * @dest: address of buffer to copy string to
+ * @src: address of string to be copied
+ *
+ * Return: the pointer to dest. Otherwise NULL
  */
-
-int tokenize_line(char *s, char *tokens[])
+char *_strcpy(char *dest, const char *src)
 {
-	int i, status;
-	char *token, *hold;
+	unsigned int i;
 
-	token = strtok_r(s, " \t\n", &hold);
-	status = check_if_comment(&token);
-	if (status == 1)
+	if (src == NULL || dest == NULL)
+		return (NULL);
+
+	for (i = 0; src[i] != '\0'; i++)
+		dest[i] = src[i];
+
+	dest[i] = '\0';
+
+	return (dest);
+}
+
+
+/**
+ * _strdup - creates a copy of a given string
+ * @str: string to copy
+ *
+ * Return: new string identical to str. Otherwise NULL
+ */
+char *_strdup(const char *str)
+{
+	unsigned int length;
+	char *result;
+
+	if (str == NULL)
+		return (NULL);
+
+	/* allocate space for new string */
+	length = strlen(str);
+	result = malloc(sizeof(char) * (length + 1));
+	if (result == NULL)
+		return (NULL);
+
+	/* copy contents of str into new string */
+	return (_strcpy(result, str));
+}
+
+
+/**
+ * _strtok - tokenizes a given string using a given delimiter
+ * @str: string
+ * @delim: delimiter
+ *
+ * Return: pointer to next token. Otherwise NULL
+ */
+char *_strtok(char *str, const char *delim)
+{
+	char c;
+	int found_char = 0;
+	char *start;
+	static char *current;
+
+	start = (str ? str : current);
+
+	if (str)
+		current = str;
+
+	if (delim == NULL || *current == '\0')
+		return (NULL);
+
+	c = delim[0];
+
+	while (*current == c) /* ignore separators at beginning */
+	{
+		start++;
+		current++;
+	}
+
+	while (*current)
+	{
+		if (*current == c && found_char) /* found a delimiter */
+		{
+			*current = '\0';
+			current++;
+			break;
+		}
+
+		found_char = 1;
+		current++;
+	}
+
+	while (*current && *current == c) /* ignore separators at end */
+		current++;
+
+	return (strlen(start) ? start : NULL);
+}
+
+
+/**
+ * is_valid_int - checks if a given string is a valid integer
+ * @str: string
+ *
+ * Return: 1 if str is a valid integer. 0 otherwise
+ */
+int is_valid_int(char *str)
+{
+	unsigned int i;
+
+	if (str == NULL)
 		return (0);
 
-	for (i = 0; token && i < 2; i++)
+	for (i = 0; str[i]; i++)
 	{
-		tokens[i] = token;
-
-		token = strtok_r(NULL, " \t\n", &hold);
+		if (str[i] < '0' || str[i] > '9')
+		{
+			if (str[i] != '-' || i != 0)
+				return (0);
+		}
 	}
 
 	return (1);
-}
-
-/**
- * clear_strings - Reset strings in an array
- * @tokens: array of strings
- */
-
-void clear_strings(char *tokens[])
-{
-	int i;
-
-	for (i = 0; tokens[i]; i++)
-		tokens[i][0] = '\0';
-}
-
-/**
- * check_empty - Checks if a string is empty
- * @s: string to check
- * Return: 1 if empty, 0 otherwise
- */
-
-int check_empty(const char *s)
-{
-	while (*s != '\0')
-	{
-		if (!isspace((unsigned char)*s))
-			return (0);
-		s++;
-	}
-	return (1);
-}
-
-/**
- * check_if_comment - Checks if line is comment and changes it accordingly
- * @token: pointer to token string
- * Return: 1 if comment, 0 if not a comment
- */
-
-int check_if_comment(char **token)
-{
-	if (*token[0] == '#')
-	{
-		*token[0] = '\0';
-		return (1);
-	}
-	return (0);
 }

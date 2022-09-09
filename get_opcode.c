@@ -1,44 +1,41 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
- * get_opcode_func - gets the right operation
- * @s: opcode passed to the program
- * Return: A pointer to an opcode function, NULL if not valid
+ * get_op_func - selects the correct function using a given string
+ *
+ * Return: a pointer to the function that corresponds to op.opcode.
+ * Otherwise NULL
  */
-void (*get_opcode_func(char *s))(stack_t **stack, unsigned int n)
+void (*get_op_func(void))(stack_t **, unsigned int)
 {
-	int i;
-	instruction_t stak[] = {
-		{"pall", stack_pall},
-		{"push", stack_push},
-		{"pop", stack_pop},
-		{"add", stack_add},
-		{"swap", stack_swap},
-		{"sub", stack_sub},
-		{"pint", stack_pint},
-		{"nop", stack_nop},
-		{"pchar", stack_pchar},
-		{"pstr", stack_pstr},
-		{"rotr", stack_rotr},
-		{"sub", stack_sub},
-		{"div", stack_div},
-		{"mul", stack_mul},
-		{"mod", stack_mod},
-		/*{"queue", stack_queue},
-		{"stack", stack_stack},*/
+	int i = 0;
+	instruction_t ops[] = {
+		{"push", op_push},
+		{"pall", op_pall},
+		{"pint", op_pint},
+		{"pop", op_pop},
+		{"swap", op_swap},
+		{"add", op_add},
+		{"nop", op_nop},
+		{"sub", op_sub},
+		{"div", op_div},
+		{"mul", op_mul},
+		{"mod", op_mod},
+		{"pchar", op_pchar},
+		{"pstr", op_pstr},
 		{NULL, NULL}
 	};
 
-	i = 0;
-	while (stak[i].opcode)
+	if (op.opcode == NULL)
+		return (NULL);
+
+	while (ops[i].opcode)
 	{
-		if (strcmp(s, (stak[i]).opcode) == 0)
-		{
-			return (*(stak[i]).f);
-		}
+		if (strcmp(op.opcode, ops[i].opcode) == 0)
+			return (ops[i].f);
+
 		i++;
 	}
+
 	return (NULL);
 }

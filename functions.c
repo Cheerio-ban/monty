@@ -1,36 +1,72 @@
 #include "monty.h"
 
 /**
- * add_to_queue - adds the nodes to the end of the queue
- * @head: head of the queue
- * @n: number value for the queue
- * Return: 1 if success and -1 if fail
+ * monty - starts the monty interpreter
  */
-
-int add_to_queue(stack_t **head, int n)
+void monty(void)
 {
-	stack_t *new_node, *temp;
+	char line[MAX_LEN];
+	size_t line_len = MAX_LEN - 1;
+	unsigned int line_number = 0;
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	/* read line from input */
+	while (fgets(line, line_len, op.input))
 	{
-		printf("Error: malloc failed\n");
-		return (-1);
+		line_number++;
+		exec_op(line, line_number);
 	}
-	new_node->n = n;
-	new_node->next = NULL;
-	if (*head == NULL)
+
+}
+
+/**
+ * exec_op - checks if a given string is a valid operation and executes it
+ * @line: string
+ * @line_number: line number of current instruction
+ */
+void exec_op(char *line, unsigned int line_number)
+{
+	void (*f)(stack_t **, unsigned int);
+	char *message;
+
+	get_op(line);
+
+	if (op.opcode == NULL || op.opcode[0] == '#')
+		return;
+
+	f = get_op_func();
+	if (f == NULL)
 	{
-		new_node->prev = NULL;
-		*head = new_node;
+		message = "L%u: unknown instruction %s\n";
+		fprintf(stderr, message, line_number, op.opcode);
+		free_op();
+		exit(EXIT_FAILURE);
 	}
-	else
+
+	f(&(op.head), line_number);
+}
+
+/**
+ * get_op - gets the correct operation from a given string and updates op
+ * @line: string
+ */
+void get_op(char *line)
+{
+	char *str = line;
+
+	while (*str)
 	{
-		temp = *head;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
-		new_node->prev = temp;
+		if (*str < ' ')
+			*str = ' ';
+
+		str++;
 	}
-	return (1);
+
+	if (op.opcode)
+		free(op.opcode);
+
+	if (op.arg)
+		free(op.arg);
+
+	op.opcode = _strdup(_strtok(line, " "));
+	op.arg = _strdup(_strtok(NULL, " "));
 }
